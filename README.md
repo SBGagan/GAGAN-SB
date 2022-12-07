@@ -1,9 +1,9 @@
 
-[![MasterHead](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmV7yqTbDwN0sGW2J7ICtjg8S8FfQIJi7b6w&usqp=CAU)
+[![MasterHead](https://www.shutterstock.com/image-illustration/software-web-development-programming-concept-260nw-1658197921.jpg)
 
 <h1 align="center">Hi 👋, I'm GAGAN SB</h1>
-<h3 align="center">A passionate Software developer from India</h3>
-<img align="right" alt="Coding" width="400" src="https://media.istockphoto.com/id/537331500/photo/programming-code-abstract-technology-background-of-software-deve.jpg?b=1&s=170667a&w=0&k=20&c=iQE4in2blXsYoRYjoX7F8e4AFF6kOaE-TZiVNMPQ5kI=">
+<h3 align="center">Focusing for a challenging position in the domain of Software Development and Technology where I can put my abilities,Skills to use for both organization and career growth</h3>
+<img align="right" alt="Coding" width="400" src="https://camo.githubusercontent.com/c1dcb74cc1c1835b1d716f5051499a2814c683c806b15f04b0eba492863703e9/68747470733a2f2f63646e2e6472696262626c652e636f6d2f75736572732f3733303730332f73637265656e73686f74732f363538313234332f6176656e746f2e676966">
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sbgagan&label=Profile%20views&color=0e75b6&style=flat" alt="sbgagan" /> </p>
 
