@@ -1,0 +1,102 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Create HashMap to store student marks in each semester
+        Map<String, Map<String, Map<String, Double>>> studentMarks = new HashMap<>();
+
+        // Input number of students
+        System.out.print("Enter number of students: ");
+        int numStudents = scanner.nextInt();
+
+        // Take marks for each student
+        for (int i = 0; i < numStudents; i++) {
+            System.out.print("Enter student name: ");
+            String studentName = scanner.next();
+
+            // Create an inner HashMap for each student to store marks in two semesters
+            Map<String, Map<String, Double>> marks = new HashMap<>();
+
+            // Take marks of student in first semester
+            Map<String, Double> marksFirstSem = new HashMap<>();
+            System.out.println("Enter marks of student in first semester:-");
+            System.out.print("English: ");
+            marksFirstSem.put("English", scanner.nextDouble());
+            System.out.print("Maths: ");
+            marksFirstSem.put("Maths", scanner.nextDouble());
+            System.out.print("Science: ");
+            marksFirstSem.put("Science", scanner.nextDouble());
+            marks.put("First Semester", marksFirstSem);
+
+            // Take marks of student in second semester
+            Map<String, Double> marksSecondSem = new HashMap<>();
+            System.out.println("Enter marks of student in second semester:-");
+            System.out.print("English: ");
+            marksSecondSem.put("English", scanner.nextDouble());
+            System.out.print("Maths: ");
+            marksSecondSem.put("Maths", scanner.nextDouble());
+            System.out.print("Science: ");
+            marksSecondSem.put("Science", scanner.nextDouble());
+            marks.put("Second Semester", marksSecondSem);
+
+            // Put marks of student in HashMap
+            studentMarks.put(studentName, marks);
+        }
+
+        // Print Average Percentage of whole class in recent semester
+        double totalMarks = 0;
+        int totalSubjects = 0;
+        for (String studentName : studentMarks.keySet()) {
+            Map<String, Double> marksSecondSem = studentMarks.get(studentName).get("Second Semester");
+            for (String subject : marksSecondSem.keySet()) {
+                totalMarks += marksSecondSem.get(subject);
+                totalSubjects++;
+            }
+        }
+        double avgPercentage = totalMarks / totalSubjects;
+        System.out.println("Average Percentage of whole class in recent semester: " + avgPercentage);
+
+        // Print Average marks of Students in a subject
+        for (String subject : new String[]{"English", "Maths", "Science"}) {
+            totalMarks = 0;
+            totalSubjects = 0;
+            for (String studentName : studentMarks.keySet()) {
+                Map<String, Double> marksFirstSem = studentMarks.get(studentName).get("First Semester");
+                Map<String, Double> marksSecondSem = studentMarks.get(studentName).get("Second Semester");
+                totalMarks += (marksFirstSem.get(subject) + marksSecondSem.get(subject));
+                totalSubjects += 2;
+            }
+            avgPercentage = totalMarks / totalSubjects;
+            System.out.println("Average marks of Students in " + subject + ": " + avgPercentage);
+        }
+
+        // Print Top 2 Consistent Students across all semesters (Maximum average marks)
+        String[] topStudents = new String[]{"", ""};
+        double[] topMarks = new double[]{0, 0};
+        for (String studentName : studentMarks.keySet()) {
+            Map<String, Double> marksFirstSem = studentMarks.get(studentName).get("First Semester");
+            Map<String, Double> marksSecondSem = studentMarks.get(studentName).get("Second Semester");
+            double totalMarksOfStudent = 0;
+            for (String subject : new String[]{"English", "Maths", "Science"}) {
+                totalMarksOfStudent += (marksFirstSem.get(subject) + marksSecondSem.get(subject));
+            }
+            double avgMarksOfStudent = totalMarksOfStudent / 6;
+
+            if (avgMarksOfStudent > topMarks[0]) {
+                topMarks[1] = topMarks[0];
+                topStudents[1] = topStudents[0];
+                topMarks[0] = avgMarksOfStudent;
+                topStudents[0] = studentName;
+            } else if (avgMarksOfStudent > topMarks[1]) {
+                topMarks[1] = avgMarksOfStudent;
+                topStudents[1] = studentName;
+            }
+        }
+        System.out.println("Top 2 Consistent Students across all semesters (Maximum average marks): ");
+        System.out.println(topStudents[0] + ": " + topMarks[0]);
+        System.out.println(topStudents[1] + ": " + topMarks[1]);
+    }
+}
